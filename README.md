@@ -1,1 +1,1 @@
-# Johns Hopkins Cryptocurrency Map
+# Johns Hopkins University Cryptocurrency Map
