@@ -1,1 +1,1 @@
-# JohnsHopkinsCryptocurrencyMap
+# Johns Hopkins Cryptocurrency Map
