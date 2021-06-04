@@ -50,9 +50,10 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.add_argument('--ignore-certificate-errors')
+options.add_argument('--headless')
 options.add_argument('--incognito')
 #ChromeDriver 88.0.4324.96 mac64
-DRIVER_PATH = '/Users/neelmehta/Downloads/chromedriver 2'
+DRIVER_PATH = './selenium_driver/chromedriver'
 
 headers = {
     'Access-Control-Allow-Origin': '*',
@@ -111,11 +112,13 @@ for element in find_all_locations:
     df1 = pd.DataFrame({'ATM Company' : ['BitCoin Depot'],'Name' : [location_name], 'Street' : [location_address], 'State' : ["N/A"], 'Zip Code' : ["N/A"],'Scrape Date' : [today]})
     df = df.append(df1)
     count = count + 1
+    print(df1.head())
     
 df.to_sql('atm_data', conn, index = False, if_exists= 'append')
 dfCount = pd.DataFrame({'ATM Count' : [count], 'Date' : [today], 'ATM Company' : ['Bitcoin Depot']})
 dfCount.to_sql('atm_scrape_data', conn, index = False, if_exists= 'append')
 con.close()
+browser.quit()
     
     
     

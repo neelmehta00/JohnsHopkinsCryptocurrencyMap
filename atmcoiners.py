@@ -13,8 +13,8 @@ options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--incognito')
-#options.add_argument('--headless')
-DRIVER_PATH = '/Users/neelmehta/Downloads/chromedriver 2'
+options.add_argument('--headless')
+DRIVER_PATH = './selenium_driver/chromedriver'
 headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET',
@@ -127,7 +127,7 @@ for i in range(len(storename)):
     df1 = pd.DataFrame({'ATM Company' : ['ATM coiners'],'Name' : [name], 'Street' : [finalstreet], 'State' : [state], 'Zip Code' : [zipcode],'Scrape Date' : [today]})
     df = df.append(df1)
     count = count + 1
-
+    print(df1.head())
 
     
 
@@ -135,6 +135,4 @@ df.to_sql('atm_data', conn, index = False, if_exists= 'append')
 dfCount = pd.DataFrame({'ATM Count' : [count], 'Date' : [today], 'ATM Company' : ['ATM Coiners']})
 dfCount.to_sql('atm_scrape_data', conn, index = False, if_exists= 'append')
 
-    
-
-
+browser.quit()

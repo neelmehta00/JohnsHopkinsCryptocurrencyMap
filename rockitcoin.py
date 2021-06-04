@@ -20,8 +20,8 @@ options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--incognito')
-#options.add_argument('--headless')
-DRIVER_PATH = '/Users/neelmehta/Downloads/chromedriver 2'
+options.add_argument('--headless')
+DRIVER_PATH = './selenium_driver/chromedriver'
 headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET',
@@ -53,7 +53,7 @@ for i in range(len(storeaddress)):
     
     state = address[address.find(">") + 2:]
     city= state[:state.find(" ")]
-
+    #print(address)
     state = state[state.find(" ") + 1:]
     state = state[:state.find("USA") - 1]
     us_state_abbrev = {
@@ -124,10 +124,11 @@ for i in range(len(storeaddress)):
     df1 = pd.DataFrame({'ATM Company' : ['Rockit Coin'],'Name' : [storeName], 'Street' : [street], 'State' : [state], 'Zip Code' : ["N/A"],'Scrape Date' : [today]})
     df = df.append(df1)
     count = count + 1
-    
+    print(df1.head())
 
 
 df.to_sql('atm_data', conn, index = False, if_exists= 'append')
 dfCount = pd.DataFrame({'ATM Count' : [count], 'Date' : [today], 'ATM Company' : ['Rockit Coin']})
 dfCount.to_sql('atm_scrape_data', conn, index = False, if_exists= 'append')
 con.close()
+browser.quit()

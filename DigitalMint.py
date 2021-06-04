@@ -28,8 +28,8 @@ options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--incognito')
-#options.add_argument('--headless')
-DRIVER_PATH = '/Users/neelmehta/Downloads/chromedriver 2'
+options.add_argument('--headless')
+DRIVER_PATH = './selenium_driver/chromedriver'
 headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET',
@@ -185,12 +185,12 @@ for element in linklist:
         
         df1 = pd.DataFrame({'ATM Company' : ['DigitalMint'],'Name' : [name], 'Street' : [street], 'State' : [state], 'Zip Code' : [zipCode],'Scrape Date' : [today]})
         df = df.append(df1)
-
+        print(df1.head())
 df.to_sql('atm_data', conn, index = False, if_exists= 'append')
 dfCount = pd.DataFrame({'ATM Count' : [count], 'Date' : [today], 'ATM Company' : ['Digital Mint']})
 dfCount.to_sql('atm_scrape_data', conn, index = False, if_exists= 'append')
 con.close()
-
+browser.quit()
                 
 
         
