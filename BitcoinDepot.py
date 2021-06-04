@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun May  2 22:54:57 2021
-
 @author: neelmehta
 """
 from bs4 import BeautifulSoup
@@ -119,28 +118,4 @@ dfCount = pd.DataFrame({'ATM Count' : [count], 'Date' : [today], 'ATM Company' :
 dfCount.to_sql('atm_scrape_data', conn, index = False, if_exists= 'append')
 con.close()
 browser.quit()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
